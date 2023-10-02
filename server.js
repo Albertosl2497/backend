@@ -12,11 +12,11 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(
   cors({
-    origin: ["https://frontend-1vj.pages.dev/", "http://localhost:3000"],
+    origin: ["https://frontend-1vj.pages.dev", "http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"],
     "X-Requested-With": "XMLHttpRequest",
     "Access-Control-Allow-Origin": [
-      "https://frontend-1vj.pages.dev/",
+      "https://frontend-1vj.pages.dev",
       "http://localhost:3000",
     ],
     "Access-Control-Allow-Credentials": true,
