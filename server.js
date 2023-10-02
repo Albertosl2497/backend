@@ -12,11 +12,11 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(
   cors({
-    origin: ["https://car-frontend.pages.dev", "http://localhost:3000"],
+    origin: ["https://github.com/Albertosl2497/frontend", "http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"],
     "X-Requested-With": "XMLHttpRequest",
     "Access-Control-Allow-Origin": [
-      "https://car-frontend.pages.dev",
+      "https://github.com/Albertosl2497/frontend",
       "http://localhost:3000",
     ],
     "Access-Control-Allow-Credentials": true,
