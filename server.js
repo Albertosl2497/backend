@@ -12,11 +12,11 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(
   cors({
-    origin: ["https://frontend-1vj.pages.dev", "http://localhost:3000"],
+    origin: ["https://0e8a8aa9.frontend-1vj.pages.dev/", "http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"],
     "X-Requested-With": "XMLHttpRequest",
     "Access-Control-Allow-Origin": [
-      "https://frontend-1vj.pages.dev",
+      "https://0e8a8aa9.frontend-1vj.pages.dev/",
       "http://localhost:3000",
     ],
     "Access-Control-Allow-Credentials": true,
@@ -51,24 +51,24 @@ app.use((error, req, res, next) => {
   });
 });
 
- //const adminUser = new User({
-   //fullName: "Sorteos MG",
-   //phoneNumber: "0000000000",
-   //state: "Jalisco",
-   //city: "Guadalajara",
-   //email: "sorteosmg1@gmail.com",
-   //password: bcrypt.hashSync("Sorteos-mg24.", 10),
-   //isAdmin: true,
- //});
+ const adminUser = new User({
+   fullName: "Sorteos MG",
+   phoneNumber: "0000000000",
+   state: "Jalisco",
+   city: "Guadalajara",
+   email: "sorteosmg1@gmail.com",
+   password: bcrypt.hashSync("Sorteos-mg24.", 10),
+   isAdmin: true,
+ });
 
-  //adminUser
-  //.save()
- //.then((savedUser) => {
-  //console.log("User saved successfully:", savedUser);
-   //})
-  //.catch((err) => {
-   //console.error("Error saving user:", err);
-  //});
+  adminUser
+  .save()
+ .then((savedUser) => {
+  console.log("User saved successfully:", savedUser);
+   })
+  .catch((err) => {
+   console.error("Error saving user:", err);
+  });
 
 app.listen(port, () => {
   console.log("Server is listening on port", port);
