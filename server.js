@@ -51,24 +51,24 @@ app.use((error, req, res, next) => {
   });
 });
 
-// const adminUser = new User({
-//   fullName: "Sorteos MG",
-//   phoneNumber: "0000000000",
-//   state: "Jalisco",
-//   city: "Guadalajara",
-//   email: "sorteosmg1@gmail.com",
-//   password: bcrypt.hashSync("Sorteos-mg24.", 10),
-//   isAdmin: true,
-// });
+ const adminUser = new User({
+   fullName: "Sorteos MG",
+   phoneNumber: "0000000000",
+   state: "Jalisco",
+   city: "Guadalajara",
+   email: "sorteosmg1@gmail.com",
+   password: bcrypt.hashSync("Sorteos-mg24.", 10),
+   isAdmin: true,
+ });
 
-// adminUser
-//   .save()
-//   .then((savedUser) => {
-//     console.log("User saved successfully:", savedUser);
-//   })
-//   .catch((err) => {
-//     console.error("Error saving user:", err);
-//   });
+  adminUser
+  .save()
+ .then((savedUser) => {
+  console.log("User saved successfully:", savedUser);
+   })
+  .catch((err) => {
+   console.error("Error saving user:", err);
+  });
 
 app.listen(port, () => {
   console.log("Server is listening on port", port);
