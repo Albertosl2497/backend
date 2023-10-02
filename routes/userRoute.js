@@ -50,12 +50,14 @@ router.get("/latest-lottery", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-
+  console.log('Login process');
   try {
     // Find user by email
     const user = await User.findOne({ email: username });
+    console.log(user);
     // Check if user exists and the password is correct
     if (!user || !bcrypt.compare(password, user.password)) {
+      console.log('User not found');
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
