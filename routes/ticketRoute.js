@@ -117,6 +117,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
 });
 
 //create tickets in bulk
+/*
 router.post("/create-lottery", async (req, res) => {
   const { totalTickets } = req.body;
   const count = parseInt(totalTickets, 10);
@@ -152,6 +153,45 @@ router.post("/create-lottery", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+*/
+
+router.post("/create-lottery", async (req, res) => {
+  const { totalTickets } = req.body;
+  const count = parseInt(totalTickets, 10);
+  const padLength = String(count - 1).length; // Calculate the padding length based on the highest ticket number
+
+  try {
+    // Get the latest lottery number
+    const latestLottery = await Ticket.findOne({}, { _id: 0, lotteryNo: 1 })
+      .sort({ lotteryNo: -1 })
+      .lean()
+      .exec();
+    const lotteryNo = latestLottery ? latestLottery.lotteryNo + 1 : 1;
+
+    // Generate an array of available ticket numbers
+    const availableTickets = Array(count)
+      .fill()
+      .map((_, index) => String(index).padStart(padLength, "0")); // Pad ticket numbers with zeroes to the left
+
+    // Create the new lottery object
+    const newLottery = new Ticket({
+      lotteryNo,
+      availableTickets,
+      soldTickets: [],
+      bookedTickets: [],
+    });
+
+    // Save the new lottery object to the database
+    await newLottery.save();
+
+    res.status(201).json({
+      message: `Successfully created lottery ${lotteryNo}`,
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 router.get("/tickets", async (req, res) => {
   try {
     const tickets = await Ticket.findOne({}, { _id: 0 })
