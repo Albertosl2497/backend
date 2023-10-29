@@ -95,15 +95,20 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
 
     const emailSubject = `Lottery tickets purchase confirmation for ${userInformation.email}`;
     const numTicketsPurchased = ticketNumbers.length; // Contar la cantidad de boletos comprados
+    const ticketPrice = 35; // Precio de cada boleto en pesos
+
+    const totalCost = numTicketsPurchased * ticketPrice; // Calcular el costo total
+
 
     // Usamos la imagen "logo.png" en la misma carpeta
    const emailBody = `Hola,
-    Quiero apartar ${numTicketsPurchased} boletos: [${ticketNumbers.join("] [")}]. 
+    Quiero apartar ${numTicketsPurchased} boleto(s): [${ticketNumbers.join("] [")}]. 
+    El costo total a pagar es de ${totalCost} pesos.
     Con el nombre de: ${userInformation.fullName}. 
     Soy de: ${userInformation.city} ${userInformation.state} y mi número de teléfono es: ${userInformation.phoneNumber}.
-    
+
     Gracias!
-    
+
     Saludos,
     El equipo de Rifas Efectivo Campo Treinta`;
 
