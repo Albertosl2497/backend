@@ -103,7 +103,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     // Usamos la imagen "logo.png" en la misma carpeta
    const emailBody = `Hola,
     Quiero apartar ${numTicketsPurchased} boleto(s): [${ticketNumbers.join("] [")}]. 
-    El costo total a pagar es de ${totalCost} pesos.
+    El costo total a pagar es de $${totalCost} Pesos.
     Con el nombre de: ${userInformation.fullName}. 
     Soy de: ${userInformation.city} ${userInformation.state} y mi número de teléfono es: ${userInformation.phoneNumber}.
 
