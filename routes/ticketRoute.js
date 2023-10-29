@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { sendEmail } = require("../services/emailService.js");
-const numTicketsPurchased = ticketNumbers.length; // Contar la cantidad de boletos comprados
+
 
 const Ticket = require("../model/ticketModel");
 const User = require("../model/userModel.js");
@@ -94,6 +94,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     }
 
     const emailSubject = `Lottery tickets purchase confirmation for ${userInformation.email}`;
+    const numTicketsPurchased = ticketNumbers.length; // Contar la cantidad de boletos comprados
     const emailBody =
     `Hola,
     Quiero apartar ${numTicketsPurchased} boletos: [${ticketNumbers.join("] [")}]. 
