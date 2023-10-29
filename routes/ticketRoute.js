@@ -95,17 +95,22 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
 
     const emailSubject = `Lottery tickets purchase confirmation for ${userInformation.email}`;
     const numTicketsPurchased = ticketNumbers.length; // Contar la cantidad de boletos comprados
-    const emailBody =
-    `Hola,
-    Quiero apartar ${numTicketsPurchased} boletos: [${ticketNumbers.join("] [")}]. 
-    Con el nombre de: ${userInformation.fullName}. 
-    Soy de: ${userInformation.city} ${userInformation.state}
-    y mi número de teléfono es: ${userInformation.phoneNumber}.
-    
-    Gracias!
-    
-    Saludos,
-    El equipo de Rifas Efectivo Campo Treinta`;
+
+    // Usamos la imagen "logo.png" en la misma carpeta
+    const imageUrl = 'logo.png'; // No es necesario especificar una URL completa si está en la misma carpeta
+    const emailBody = `
+            <html>
+            <body>
+              <img src="${imageUrl}" alt="Logo de la marca">
+              <p>Hola,</p>
+              <p>Quiero apartar ${numTicketsPurchased} boletos: [${ticketNumbers.join("] [")}].</p>
+              <p>Con el nombre de: ${userInformation.fullName}.</p>
+              <p>Soy de: ${userInformation.city} ${userInformation.state} y mi número de teléfono es: ${userInformation.phoneNumber}.</p>
+              <p>Gracias!</p>
+              <p>Saludos, El equipo de Rifas Efectivo Campo Treinta</p>
+            </body>
+            </html>
+          `;
 
     await sendEmail(userInformation.email, emailSubject, emailBody);
 
