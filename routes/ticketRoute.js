@@ -93,17 +93,17 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     }
 
     const emailSubject = `Lottery tickets purchase confirmation for ${userInformation.email}`;
-    const emailBody = `Hello, 
-    I want to reserve these tickets: [${ticketNumbers.join("] [")}]. 
-    With the name of: ${userInformation.fullName}. 
-    I am from: ${userInformation.city} ${
+    const emailBody = `Hola, 
+    quiero apartar estos boletos: [${ticketNumbers.join("] [")}]. 
+    Con el nombre de: ${userInformation.fullName}. 
+    Soy de: ${userInformation.city} ${
       userInformation.state
-    } and my phone number is: ${userInformation.phoneNumber}.
+    } y mi numero de telefono es: ${userInformation.phoneNumber}.
     
-    Thank you!
+    Gracias!
     
-    Regards,
-    The Lottery Team`;
+    Saludos,
+    El equipo de Rifas Efectivo Campo Treinta`;
 
     await sendEmail(userInformation.email, emailSubject, emailBody);
 
