@@ -95,7 +95,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
 
     const emailSubject = `Lottery tickets purchase confirmation for ${userInformation.email}`;
     const numTicketsPurchased = ticketNumbers.length; // Contar la cantidad de boletos comprados
-    const ticketPrice = 35; // Precio de cada boleto en pesos
+    const ticketPrice = 80; // Precio de cada boleto en pesos
 
     const totalCost = numTicketsPurchased * ticketPrice; // Calcular el costo total
 
