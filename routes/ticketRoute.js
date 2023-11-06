@@ -95,14 +95,15 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
 
     const emailSubject = `Lottery tickets purchase confirmation for ${userInformation.email}`;
     const numTicketsPurchased = ticketNumbers.length; // Contar la cantidad de boletos comprados
-    const ticketPrice = 80; // Precio de cada boleto en pesos
+    const ticketPrice = 100; // Precio de cada boleto en pesos
 
     const totalCost = numTicketsPurchased * ticketPrice; // Calcular el costo total
 
 
     // Usamos la imagen "logo.png" en la misma carpeta
    const emailBody = `Hola,
-    Quiero apartar ${numTicketsPurchased} boleto(s): [${ticketNumbers.join("] [")}]. 
+    Quiero apartar ${numTicketsPurchased} boleto(s): [${ticketNumbers.join("] [")}].
+    Para la rifa de los $7000 Pesos. El Domingo 12 de Noviembre 2023.
     El costo total a pagar es de $${totalCost} Pesos.
     Con el nombre de: ${userInformation.fullName}. 
     Soy de: ${userInformation.city} ${userInformation.state} y mi número de teléfono es: ${userInformation.phoneNumber}.
