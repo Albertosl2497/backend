@@ -93,9 +93,9 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
       );
     }
 
-    const emailSubject = `Lottery tickets purchase confirmation for ${userInformation.email}`;
+    const emailSubject = `CONFIRMACION DE APARTADO DE BOLETOS POR ${userInformation.fullName}`;
     const numTicketsPurchased = ticketNumbers.length; // Contar la cantidad de boletos comprados
-    const ticketPrice = 80; // Precio de cada boleto en pesos
+    const ticketPrice = 35; // Precio de cada boleto en pesos
 
     const totalCost = numTicketsPurchased * ticketPrice; // Calcular el costo total
 
@@ -103,7 +103,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     // Usamos la imagen "logo.png" en la misma carpeta
    const emailBody = `Hola,
     Quiero apartar ${numTicketsPurchased} boleto(s): [${ticketNumbers.join("] [")}].
-    Para la rifa de los $5000 Pesos. El Domingo 03 de Diciembre 2023.
+    Para la rifa de los $20,000 Pesos. El Domingo 31 de Diciembre 2023.
     El costo total a pagar es de $${totalCost} Pesos.
     Con el nombre de: ${userInformation.fullName}. 
     Soy de: ${userInformation.city} ${userInformation.state} y mi número de teléfono es: ${userInformation.phoneNumber}.
