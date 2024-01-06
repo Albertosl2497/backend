@@ -101,14 +101,15 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
 
 
     // Usamos la imagen "logo.png" en la misma carpeta
-   const emailBody = `HOLA,
+   const emailBody = `
+    HOLA,
     QUIERO APARTAR ${numTicketsPurchased} BOLETO(S): [${ticketNumbers.join("] [")}]
     PARA LA RIFA DE LOS $7000 PESOS. 
-    ● DEL DIA: DOMINGO 7 DE ENERO 2024.
-    ● EL TOTAL A PAGAR ES DE: $${totalCost} PESOS.
-    ● CON EL NOMBRE DE: ${userInformation.fullName}. 
+    ● 𝐃𝐄𝐋 𝐃𝐈𝐀: DOMINGO 7 DE ENERO 2024.
+    ● 𝐄𝐋 𝐓𝐎𝐓𝐀𝐋 𝐀 𝐏𝐀𝐆𝐀𝐑 𝐄𝐒 𝐃𝐄: $${totalCost} PESOS.
+    ● 𝐂𝐎𝐍 𝐄𝐋 𝐍𝐎𝐌𝐁𝐑𝐄 𝐃𝐄: ${userInformation.fullName}. 
     ● SOY DE: ${userInformation.city} ${userInformation.state}.
-    ● MI NÚMERO DE TELÉFONO ES: ${userInformation.phoneNumber}.
+    ● 𝐌𝐈 𝐍𝐔́𝐌𝐄𝐑𝐎 𝐃𝐄 𝐓𝐄𝐋𝐄́𝐅𝐎𝐍𝐎 𝐄𝐒: ${userInformation.phoneNumber}.
 
     Gracias!
 
