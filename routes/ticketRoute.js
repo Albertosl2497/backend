@@ -109,12 +109,12 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     ● 𝐄𝐋 𝐓𝐎𝐓𝐀𝐋 𝐀 𝐏𝐀𝐆𝐀𝐑 𝐄𝐒 𝐃𝐄: $${totalCost} PESOS.
     ● 𝐂𝐎𝐍 𝐄𝐋 𝐍𝐎𝐌𝐁𝐑𝐄 𝐃𝐄: ${userInformation.fullName}. 
     ● 𝐒𝐎𝐘 𝐃𝐄: ${userInformation.city} ${userInformation.state}.
-    ● 𝐌𝐈 𝐍𝐔́𝐌𝐄𝐑𝐎 𝐃𝐄 𝐓𝐄𝐋𝐄́𝐅𝐎𝐍𝐎 𝐄𝐒: ${userInformation.phoneNumber}.
+    ● 𝐌𝐈 𝐍𝐔𝐌𝐄𝐑𝐎 𝐃𝐄 𝐓𝐄𝐋𝐄𝐅𝐎𝐍𝐎 𝐄𝐒: ${userInformation.phoneNumber}.
 
-    Gracias!
+    𝙂𝙧𝙖𝙘𝙞𝙖𝙨!
 
-    Saludos,
-    El equipo de Rifas Efectivo Campo Treinta`;
+    𝙎𝙖𝙡𝙪𝙙𝙤𝙨,
+    𝙀𝙡 𝙚𝙦𝙪𝙞𝙥𝙤 𝙙𝙚 𝙍𝙞𝙛𝙖𝙨 𝙀𝙛𝙚𝙘𝙩𝙞𝙫𝙤 𝘾𝙖𝙢𝙥𝙤 𝙏𝙧𝙚𝙞𝙣𝙩𝙖`;
 
     await sendEmail(userInformation.email, emailSubject, emailBody);
 
