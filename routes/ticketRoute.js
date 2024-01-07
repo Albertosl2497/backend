@@ -183,6 +183,12 @@ router.post("/create-lottery", async (req, res) => {
       .fill()
       .map((_, index) => String(index).padStart(padLength, "0")); // Pad ticket numbers with zeroes to the left
 
+    // Group tickets in pairs
+   const groupedTickets = [];
+   for (let i = 0; i < availableTickets.length; i += 2) {
+     groupedTickets.push([availableTickets[i], availableTickets[i + 1]]);
+   }
+
     // Create the new lottery object
     const newLottery = new Ticket({
       lotteryNo,
