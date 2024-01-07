@@ -191,12 +191,12 @@ router.post("/create-lottery", async (req, res) => {
    }
 
     // Create the new lottery object
-    const newLottery = new Ticket({
-      lotteryNo,
-      availableTickets,
-      soldTickets: [],
-      bookedTickets: [],
-    });
+   const newLottery = new Ticket({
+     lotteryNo,
+     availableTickets: groupedTickets, // Use grouped tickets
+     soldTickets: [],
+     bookedTickets: [],
+   });
 
     // Save the new lottery object to the database
     await newLottery.save();
