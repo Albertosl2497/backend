@@ -95,17 +95,16 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
 
     const emailSubject = `CONFIRMACION DE APARTADO DE BOLETOS POR ${userInformation.fullName}`;
     const numTicketsPurchased = ticketNumbers.length; // Contar la cantidad de boletos comprados
-    const ticketPrice = 100; // Precio de cada boleto en pesos
+    const ticketPrice = 70; // Precio de cada boleto en pesos
 
     const totalCost = numTicketsPurchased * ticketPrice; // Calcular el costo total
 
 
     // Usamos la imagen "logo.png" en la misma carpeta
-   const emailBody = `
-    𝐇𝐎𝐋𝐀,
+   const emailBody = `𝐇𝐎𝐋𝐀,
     𝐐𝐔𝐈𝐄𝐑𝐎 𝐀𝐏𝐀𝐑𝐓𝐀𝐑 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [${ticketNumbers.join("] [")}]
-    𝐏𝐀𝐑𝐀 𝐋𝐀 𝐑𝐈𝐅𝐀 𝐃𝐄: $7000 Pesos.
-    ● 𝐃𝐄𝐋 𝐃𝐈𝐀: DOMINGO 7 DE ENERO 2024.
+    𝐏𝐀𝐑𝐀 𝐋𝐀 𝐑𝐈𝐅𝐀 𝐃𝐄: $4000 Pesos.
+    ● 𝐃𝐄𝐋 𝐃𝐈𝐀: MARTES 9 DE ENERO 2024.
     ● 𝐄𝐋 𝐓𝐎𝐓𝐀𝐋 𝐀 𝐏𝐀𝐆𝐀𝐑 𝐄𝐒 𝐃𝐄: $${totalCost} PESOS.
     ● 𝐂𝐎𝐍 𝐄𝐋 𝐍𝐎𝐌𝐁𝐑𝐄 𝐃𝐄: ${userInformation.fullName}. 
     ● 𝐒𝐎𝐘 𝐃𝐄: ${userInformation.city} ${userInformation.state}.
