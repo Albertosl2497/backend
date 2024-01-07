@@ -186,7 +186,8 @@ router.post("/create-lottery", async (req, res) => {
     // Group tickets in pairs
    const groupedTickets = [];
    for (let i = 0; i < availableTickets.length; i += 2) {
-     groupedTickets.push([availableTickets[i], availableTickets[i + 1]]);
+     const pair = [availableTickets[i], availableTickets[i + 1]].filter(Boolean); // Remove undefined values
+     groupedTickets.push(pair);
    }
 
     // Create the new lottery object
