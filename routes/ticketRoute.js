@@ -104,14 +104,13 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
    const emailBody = `𝐇𝐎𝐋𝐀,
     𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [${ticketNumbers.join("] [")}]
     𝐏𝐀𝐑𝐀 𝐋𝐀 𝐑𝐈𝐅𝐀 𝐃𝐄: $20,000 Pesos.
-    ● 𝐃𝐄𝐋 𝐃𝐈𝐀: MARTES 10 DE MARZO 2024.
+    ● 𝐃𝐄𝐋 𝐃𝐈𝐀: DOMINGO 10 DE MARZO 2024.
     ● 𝐄𝐋 𝐓𝐎𝐓𝐀𝐋 𝐀 𝐏𝐀𝐆𝐀𝐑 𝐄𝐒 𝐃𝐄: $${totalCost} PESOS.
     ● 𝐂𝐎𝐍 𝐄𝐋 𝐍𝐎𝐌𝐁𝐑𝐄 𝐃𝐄: ${userInformation.fullName}. 
     ● 𝐒𝐎𝐘 𝐃𝐄: ${userInformation.city} ${userInformation.state}.
     ● 𝐌𝐈 𝐍𝐔𝐌𝐄𝐑𝐎 𝐃𝐄 𝐓𝐄𝐋𝐄𝐅𝐎𝐍𝐎 𝐄𝐒: ${userInformation.phoneNumber}.
 
     𝙂𝙧𝙖𝙘𝙞𝙖𝙨!
-
     𝙎𝙖𝙡𝙪𝙙𝙤𝙨,
     𝙀𝙡 𝙚𝙦𝙪𝙞𝙥𝙤 𝙙𝙚 𝙍𝙞𝙛𝙖𝙨 𝙀𝙛𝙚𝙘𝙩𝙞𝙫𝙤 𝘾𝙖𝙢𝙥𝙤 𝙏𝙧𝙚𝙞𝙣𝙩𝙖`;
 
