@@ -100,20 +100,27 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     const totalCost = numTicketsPurchased * ticketPrice; // Calcular el costo total
 
     // Generar números adicionales (parejas) para cada número seleccionado
-    const additionalNumbers = ticketNumbers.map(ticket => (parseInt(ticket) + 5000).toString());
+    // const additionalNumbers = ticketNumbers.map(ticket => (parseInt(ticket) + 5000).toString());
 
     // Unir los números de boletos originales con sus parejas
-    const combinedTicketNumbers = ticketNumbers.map((ticket, index) => `[${ticket} - ${additionalNumbers[index]}]`).join(" ");
+   // const combinedTicketNumbers = ticketNumbers.map((ticket, index) => `[${ticket} - ${additionalNumbers[index]}]`).join(" ");
+    //𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): ${combinedTicketNumbers}
+
+    const currentDate = new Date();
+    const purchaseDate = currentDate.toLocaleDateString(); // Formatear la fecha como "MM/DD/YYYY"
+    const purchaseTime = currentDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }); // Formatear la hora en formato AM/PM
+
     
-    // Usamos la imagen "logo.png" en la misma carpeta
    const emailBody = `𝐇𝐎𝐋𝐀,
-    𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): ${combinedTicketNumbers}
+    𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [${ticketNumbers.join("] [")}]
     𝐏𝐀𝐑𝐀 𝐋𝐀 𝐑𝐈𝐅𝐀 𝐃𝐄: $20,000 Pesos.
     ● 𝐃𝐄𝐋 𝐃𝐈𝐀: DOMINGO 10 DE MARZO 2024.
     ● 𝐄𝐋 𝐓𝐎𝐓𝐀𝐋 𝐀 𝐏𝐀𝐆𝐀𝐑 𝐄𝐒 𝐃𝐄: $${totalCost} PESOS.
     ● 𝐂𝐎𝐍 𝐄𝐋 𝐍𝐎𝐌𝐁𝐑𝐄 𝐃𝐄: ${userInformation.fullName}. 
     ● 𝐒𝐎𝐘 𝐃𝐄: ${userInformation.city} ${userInformation.state}.
     ● 𝐌𝐈 𝐍𝐔𝐌𝐄𝐑𝐎 𝐃𝐄 𝐓𝐄𝐋𝐄𝐅𝐎𝐍𝐎 𝐄𝐒: ${userInformation.phoneNumber}.
+      Fecha de Compra: ${purchaseDate} ${purchaseTime}
+       
 
     𝙂𝙧𝙖𝙘𝙞𝙖𝙨!
     𝙎𝙖𝙡𝙪𝙙𝙤𝙨,
