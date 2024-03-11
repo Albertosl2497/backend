@@ -109,7 +109,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     const currentDate = new Date();
     const purchaseDate = currentDate.toLocaleDateString(); // Formatear la fecha como "MM/DD/YYYY"
     const purchaseTime = currentDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }); // Formatear la hora en formato AM/PM
-    
+
     
    const emailBody = `𝐇𝐎𝐋𝐀,
     𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [${ticketNumbers.join("] [")}]
