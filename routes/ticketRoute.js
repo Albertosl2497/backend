@@ -106,10 +106,10 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
    // const combinedTicketNumbers = ticketNumbers.map((ticket, index) => `[${ticket} - ${additionalNumbers[index]}]`).join(" ");
     //𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): ${combinedTicketNumbers}
 
-    //const currentDate = new Date();
-    //const purchaseDate = currentDate.toLocaleDateString(); // Formatear la fecha como "MM/DD/YYYY"
-    //const purchaseTime = currentDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }); // Formatear la hora en formato AM/PM
-    //Fecha y Hora de Compra: ${purchaseDate} ${purchaseTime}
+    const currentDate = new Date();
+    const purchaseDate = currentDate.toLocaleDateString(); // Formatear la fecha como "MM/DD/YYYY"
+    const purchaseTime = currentDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }); // Formatear la hora en formato AM/PM
+    
     
    const emailBody = `𝐇𝐎𝐋𝐀,
     𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [${ticketNumbers.join("] [")}]
@@ -119,6 +119,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     ● 𝐂𝐎𝐍 𝐄𝐋 𝐍𝐎𝐌𝐁𝐑𝐄 𝐃𝐄: ${userInformation.fullName}. 
     ● 𝐒𝐎𝐘 𝐃𝐄: ${userInformation.city} ${userInformation.state}.
     ● 𝐌𝐈 𝐍𝐔𝐌𝐄𝐑𝐎 𝐃𝐄 𝐓𝐄𝐋𝐄𝐅𝐎𝐍𝐎 𝐄𝐒: ${userInformation.phoneNumber}.
+      Fecha y Hora de Compra: ${purchaseDate} ${purchaseTime}.
       
     𝙂𝙧𝙖𝙘𝙞𝙖𝙨! 𝙎𝙖𝙡𝙪𝙙𝙤𝙨,
     𝙀𝙡 𝙚𝙦𝙪𝙞𝙥𝙤 𝙙𝙚 𝙍𝙞𝙛𝙖𝙨 𝙀𝙛𝙚𝙘𝙩𝙞𝙫𝙤 𝘾𝙖𝙢𝙥𝙤 𝙏𝙧𝙚𝙞𝙣𝙩𝙖`;
