@@ -100,7 +100,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     const totalCost = numTicketsPurchased * ticketPrice; // Calcular el costo total
     const currentDate = new Date();
     const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
-    const formattedTime = `${currentDate.getHours(-7)}:${currentDate.getMinutes()}`;
+    const formattedTime = `${currentDate.getHours() -7}:${currentDate.getMinutes()}`;
     
    const emailBody = `𝐇𝐎𝐋𝐀,
     𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [${ticketNumbers.join("] [")}]
