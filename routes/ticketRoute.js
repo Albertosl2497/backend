@@ -98,29 +98,9 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     const ticketPrice = 50; // Precio de cada boleto en pesos
 
     const totalCost = numTicketsPurchased * ticketPrice; // Calcular el costo total
-
-    // Generar números adicionales (parejas) para cada número seleccionado
-    // const additionalNumbers = ticketNumbers.map(ticket => (parseInt(ticket) + 5000).toString());
-
-    // Unir los números de boletos originales con sus parejas
-   // const combinedTicketNumbers = ticketNumbers.map((ticket, index) => `[${ticket} - ${additionalNumbers[index]}]`).join(" ");
-    //𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): ${combinedTicketNumbers}
-
     const currentDate = new Date();
-
-    // Opciones para formatear la fecha con el nombre del mes en español
-    const options = { 
-        year: 'numeric', 
-        month: 'long', 
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true
-    };
-
-    // Obtener la fecha y hora formateadas en español
-    const formattedDateTime = currentDate.toLocaleDateString('es-ES', options);
-
+    const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+    const formattedTime = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
     
    const emailBody = `𝐇𝐎𝐋𝐀,
     𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [${ticketNumbers.join("] [")}]
@@ -130,6 +110,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     ● 𝐂𝐎𝐍 𝐄𝐋 𝐍𝐎𝐌𝐁𝐑𝐄 𝐃𝐄: ${userInformation.fullName}. 
     ● 𝐒𝐎𝐘 𝐃𝐄: ${userInformation.city} ${userInformation.state}.
     ● 𝐌𝐈 𝐍𝐔𝐌𝐄𝐑𝐎 𝐃𝐄 𝐓𝐄𝐋𝐄𝐅𝐎𝐍𝐎 𝐄𝐒: ${userInformation.phoneNumber}.
+    𝗙𝗘𝗖𝗛𝗔 𝗗𝗘 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗢 𝗗𝗘𝗟 𝗕𝗢𝗟𝗘𝗧𝗢: ${formattedDate} ${formattedTime} Horas.
       
     𝙂𝙧𝙖𝙘𝙞𝙖𝙨! 𝙎𝙖𝙡𝙪𝙙𝙤𝙨,
     𝙀𝙡 𝙚𝙦𝙪𝙞𝙥𝙤 𝙙𝙚 𝙍𝙞𝙛𝙖𝙨 𝙀𝙛𝙚𝙘𝙩𝙞𝙫𝙤 𝘾𝙖𝙢𝙥𝙤 𝙏𝙧𝙚𝙞𝙣𝙩𝙖`;
