@@ -102,11 +102,18 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
     const formattedTime = `${currentDate.getHours() -7}:${currentDate.getMinutes()}`;
 
-    // Generar números adicionales (parejas) para cada número seleccionado
-    const additionalNumbers = ticketNumbers.map(ticket => (parseInt(ticket) + 250).toString());
-
+        // Generar números adicionales (parejas) para cada número seleccionado
+    const additionalNumbers = ticketNumbers.flatMap(ticket => {
+        const original = parseInt(ticket);
+        return [original, original + 250, original + 500, original + 750];
+    }).map(num => num.toString());
+    
     // Unir los números de boletos originales con sus parejas
-    const combinedTicketNumbers = ticketNumbers.map((ticket, index) => `[${ticket} - ${additionalNumbers[index]}]`).join(" ");
+    const combinedTicketNumbers = ticketNumbers.flatMap((ticket, index) => {
+        const original = parseInt(ticket);
+        const additional = [original + 250, original + 500, original + 750];
+        return [original, ...additional].map((num, i) => `[${num}]`);
+    }).join(" ");
     
    const emailBody = `𝐇𝐎𝐋𝐀,
     𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): ${combinedTicketNumbers}.
