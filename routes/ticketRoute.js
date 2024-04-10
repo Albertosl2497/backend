@@ -118,7 +118,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
    const emailBody = `𝐇𝐎𝐋𝐀,
     𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): ${combinedTicketNumbers}.
     𝐏𝐀𝐑𝐀 𝐋𝐀 𝐑𝐈𝐅𝐀 𝐃𝐄: $15,000 PESOS.
-    ● 𝐃𝐄𝐋 𝐃𝐈𝐀: MARTES 21 DE ABRIL 2024.
+    ● 𝐃𝐄𝐋 𝐃𝐈𝐀: DOMINGO 21 DE ABRIL 2024.
     ● 𝐄𝐋 𝐓𝐎𝐓𝐀𝐋 𝐀 𝐏𝐀𝐆𝐀𝐑 𝐄𝐒 𝐃𝐄: $${totalCost} PESOS.
     ● 𝐂𝐎𝐍 𝐄𝐋 𝐍𝐎𝐌𝐁𝐑𝐄 𝐃𝐄: ${userInformation.fullName}. 
     ● 𝐒𝐎𝐘 𝐃𝐄: ${userInformation.city} ${userInformation.state}.
