@@ -93,7 +93,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
       );
     }
 
-    const emailSubject = `CONFIRMACION DE APARTADO DE BOLETOS POR ${userInformation.fullName}`;
+    const emailSubject = `${userInformation.fullName}  ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [ ${combinedTicketNumbers} ]`;
     const numTicketsPurchased = ticketNumbers.length; // Contar la cantidad de boletos comprados
     const ticketPrice = 100; // Precio de cada boleto en pesos
 
