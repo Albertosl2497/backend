@@ -121,7 +121,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     ● 𝐃𝐄𝐋 𝐃𝐈𝐀: 30 DE JUNIO 2024.
     ● 𝐄𝐋 𝐓𝐎𝐓𝐀𝐋 𝐀 𝐏𝐀𝐆𝐀𝐑 𝐄𝐒 𝐃𝐄: $${totalCost} PESOS.
     ● 𝐂𝐎𝐍 𝐄𝐋 𝐍𝐎𝐌𝐁𝐑𝐄 𝐃𝐄: ${userInformation.fullName}. 
-    ● 𝐒𝐎𝐘 𝐃𝐄: ${userInformation.city} ${userInformation.state}.
+    ● 𝐒𝐎𝐘 𝐃𝐄: ${userInformation.state}.
     ● 𝐌𝐈 𝐍𝐔𝐌𝐄𝐑𝐎 𝐃𝐄 𝐓𝐄𝐋𝐄𝐅𝐎𝐍𝐎 𝐄𝐒: ${userInformation.phoneNumber}.
   
       
