@@ -116,7 +116,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     }).join(" ");
     
    const emailBody = `𝐇𝐎𝐋𝐀,
-    𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [ ${original} ].
+    𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [ ${ticketNumbers.flatMap} ].
     𝐏𝐀𝐑𝐀 𝐋𝐀 𝐑𝐈𝐅𝐀 𝐃𝐄: $15,000 PESOS.
     ● 𝐃𝐄𝐋 𝐃𝐈𝐀: 30 DE JUNIO 2024.
     ● 𝐄𝐋 𝐓𝐎𝐓𝐀𝐋 𝐀 𝐏𝐀𝐆𝐀𝐑 𝐄𝐒 𝐃𝐄: $${totalCost} PESOS.
