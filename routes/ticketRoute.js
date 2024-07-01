@@ -95,7 +95,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
 
     const emailSubject = `${userInformation.fullName} `;
     const numTicketsPurchased = ticketNumbers.length; // Contar la cantidad de boletos comprados
-    const ticketPrice = 100; // Precio de cada boleto en pesos
+    const ticketPrice = 35; // Precio de cada boleto en pesos
 
     const totalCost = numTicketsPurchased * ticketPrice; // Calcular el costo total
     const currentDate = new Date();
@@ -116,7 +116,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     }).join(" ");
     
    const emailBody = `𝐇𝐎𝐋𝐀,
-    𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [ ${combinedTicketNumbers} ].
+    𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [ ${original} ].
     𝐏𝐀𝐑𝐀 𝐋𝐀 𝐑𝐈𝐅𝐀 𝐃𝐄: $15,000 PESOS.
     ● 𝐃𝐄𝐋 𝐃𝐈𝐀: 30 DE JUNIO 2024.
     ● 𝐄𝐋 𝐓𝐎𝐓𝐀𝐋 𝐀 𝐏𝐀𝐆𝐀𝐑 𝐄𝐒 𝐃𝐄: $${totalCost} PESOS.
