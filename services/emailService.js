@@ -11,7 +11,7 @@ async function sendEmail(to, subject, text) {
     });
 
     const mailOptions = {
-      from: "your_email_address",
+      from: "sorteosmg1@gmail.com",
       to,
       cc: "sorteosmg1@gmail.com",
       subject,
