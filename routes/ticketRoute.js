@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { sendEmail } = require("../services/emailService.js");
 
-
 const Ticket = require("../model/ticketModel");
 const User = require("../model/userModel.js");
 
@@ -93,40 +92,18 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
       );
     }
 
-    const emailSubject = `${userInformation.fullName} `;
-    const numTicketsPurchased = ticketNumbers.length; // Contar la cantidad de boletos comprados
-    const ticketPrice = 100; // Precio de cada boleto en pesos
-
-    const totalCost = numTicketsPurchased * ticketPrice; // Calcular el costo total
-    const currentDate = new Date();
-    const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
-    const formattedTime = `${currentDate.getHours() -7}:${currentDate.getMinutes()}`;
-
-           // Generar números adicionales (parejas) para cada número seleccionado
-    const additionalNumbers = ticketNumbers.flatMap(ticket => {
-        const original = parseInt(ticket);
-        return [original, original + 250, original + 500, original + 750];
-    }).map(num => num.toString().padStart(3, '0')); // Añadir ceros a la izquierda si es necesario
+    const emailSubject = `Lottery tickets purchase confirmation for ${userInformation.email}`;
+    const emailBody = `Hello, 
+    I want to reserve these tickets: [${ticketNumbers.join("] [")}]. 
+    With the name of: ${userInformation.fullName}. 
+    I am from: ${userInformation.city} ${
+      userInformation.state
+    } and my phone number is: ${userInformation.phoneNumber}.
     
-    // Unir los números de boletos originales con sus parejas
-    const combinedTicketNumbers = ticketNumbers.flatMap((ticket, index) => {
-        const original = parseInt(ticket);
-        const additional = [original + 250, original + 500, original + 750];
-        return [original, ...additional].map((num, i) => `[${num.toString().padStart(3, '0')}]`);
-    }).join(" ");
+    Thank you!
     
-   const emailBody = `𝐇𝐎𝐋𝐀,
-    𝐇𝐀𝐒 𝐑𝐄𝐒𝐄𝐑𝐕𝐀𝐃𝐎 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [ ${combinedTicketNumbers} ].
-    𝐏𝐀𝐑𝐀 𝐋𝐀 𝐑𝐈𝐅𝐀 𝐃𝐄: $15,000 PESOS.
-    ● 𝐃𝐄𝐋 𝐃𝐈𝐀: 03 DE DICIEMBRE 2024.
-    ● 𝐄𝐋 𝐓𝐎𝐓𝐀𝐋 𝐀 𝐏𝐀𝐆𝐀𝐑 𝐄𝐒 𝐃𝐄: $${totalCost} PESOS.
-    ● 𝐂𝐎𝐍 𝐄𝐋 𝐍𝐎𝐌𝐁𝐑𝐄 𝐃𝐄: ${userInformation.fullName}. 
-    ● 𝐒𝐎𝐘 𝐃𝐄: ${userInformation.state}.
-    ● 𝐌𝐈 𝐍𝐔𝐌𝐄𝐑𝐎 𝐃𝐄 𝐓𝐄𝐋𝐄𝐅𝐎𝐍𝐎 𝐄𝐒: ${userInformation.phoneNumber}.
-  
-      
-    𝙂𝙧𝙖𝙘𝙞𝙖𝙨! 𝙎𝙖𝙡𝙪𝙙𝙤𝙨,
-    𝙀𝙡 𝙚𝙦𝙪𝙞𝙥𝙤 𝙙𝙚 𝙍𝙞𝙛𝙖𝙨 𝙀𝙛𝙚𝙘𝙩𝙞𝙫𝙤 𝘾𝙖𝙢𝙥𝙤 𝙏𝙧𝙚𝙞𝙣𝙩𝙖`;
+    Regards,
+    The Lottery Team`;
 
     await sendEmail(userInformation.email, emailSubject, emailBody);
 
@@ -140,7 +117,6 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
 });
 
 //create tickets in bulk
-/*
 router.post("/create-lottery", async (req, res) => {
   const { totalTickets } = req.body;
   const count = parseInt(totalTickets, 10);
@@ -176,45 +152,6 @@ router.post("/create-lottery", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-*/
-
-router.post("/create-lottery", async (req, res) => {
-  const { totalTickets } = req.body;
-  const count = parseInt(totalTickets, 10);
-  const padLength = String(count - 1).length; // Calculate the padding length based on the highest ticket number
-
-  try {
-    // Get the latest lottery number
-    const latestLottery = await Ticket.findOne({}, { _id: 0, lotteryNo: 1 })
-      .sort({ lotteryNo: -1 })
-      .lean()
-      .exec();
-    const lotteryNo = latestLottery ? latestLottery.lotteryNo + 1 : 1;
-
-    // Generate an array of available ticket numbers
-    const availableTickets = Array(count)
-      .fill()
-      .map((_, index) => String(index).padStart(padLength, "0")); // Pad ticket numbers with zeroes to the left
-
-    // Create the new lottery object
-    const newLottery = new Ticket({
-      lotteryNo,
-      availableTickets,
-      soldTickets: [],
-      bookedTickets: [],
-    });
-
-    // Save the new lottery object to the database
-    await newLottery.save();
-
-    res.status(201).json({
-      message: `Successfully created lottery ${lotteryNo}`,
-    });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
 router.get("/tickets", async (req, res) => {
   try {
     const tickets = await Ticket.findOne({}, { _id: 0 })
