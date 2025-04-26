@@ -1,5 +1,3 @@
-const nodemailer = require("nodemailer");
-
 async function sendEmail(to, subject, text) {
   try {
     const transporter = nodemailer.createTransport({
@@ -22,9 +20,7 @@ async function sendEmail(to, subject, text) {
 
     console.log(`Email sent to ${to}`);
   } catch (error) {
-  console.error("Error completo:", error); // <--- Esto te mostrará todo el detalle
-  //throw new Error("Failed to send email");
+    //  Mostrá el error completo
+    console.error("ERROR AL ENVIAR:", error); 
+  }
 }
-}
-
-module.exports = { sendEmail };
