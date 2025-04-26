@@ -105,7 +105,7 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
     Regards,
     The Lottery Team`;
 
-    await sendEmail(userInformation.email, emailSubject, emailBody);
+    //await sendEmail(userInformation.email, emailSubject, emailBody);
 
     res.status(200).json({
       message: `Successfully sold tickets for lottery ${lotteryNo}`,
