@@ -23,7 +23,7 @@ async function sendEmail(to, subject, text) {
     console.log(`Email sent to ${to}`);
   } catch (error) {
   console.error("Error completo:", error); // <--- Esto te mostrará todo el detalle
-  throw new Error("Failed to send email");
+  //throw new Error("Failed to send email");
 }
 }
 
