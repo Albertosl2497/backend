@@ -1,8 +1,9 @@
+
 const express = require("express");
 const router = express.Router();
 const { sendEmail } = require("../services/emailService.js");
 
- 
+
 const Ticket = require("../model/ticketModel");
 const User = require("../model/userModel.js");
 
@@ -93,24 +94,27 @@ router.patch("/sell-tickets/:lotteryNo", async (req, res) => {
       );
     }
 
-    const emailSubject = `Lottery tickets purchase confirmation for ${userInformation.email}`;
+    const emailSubject = `CONFIRMACION DE APARTADO DE BOLETOS POR ${userInformation.fullName}`;
     const numTicketsPurchased = ticketNumbers.length; // Contar la cantidad de boletos comprados
-    const ticketPrice = 80; // Precio de cada boleto en pesos
+    const ticketPrice = 70; // Precio de cada boleto en pesos
 
     const totalCost = numTicketsPurchased * ticketPrice; // Calcular el costo total
 
 
     // Usamos la imagen "logo.png" en la misma carpeta
-   const emailBody = `Hola,
-    Quiero apartar ${numTicketsPurchased} boleto(s): [${ticketNumbers.join("] [")}]. 
-    El costo total a pagar es de $${totalCost} Pesos.
-    Con el nombre de: ${userInformation.fullName}. 
-    Soy de: ${userInformation.city} ${userInformation.state} y mi número de teléfono es: ${userInformation.phoneNumber}.
+   const emailBody = `𝐇𝐎𝐋𝐀,
+    𝐐𝐔𝐈𝐄𝐑𝐎 𝐀𝐏𝐀𝐑𝐓𝐀𝐑 ${numTicketsPurchased} 𝐁𝐎𝐋𝐄𝐓𝐎(𝐒): [${ticketNumbers.join("] [")}]
+    𝐏𝐀𝐑𝐀 𝐋𝐀 𝐑𝐈𝐅𝐀 𝐃𝐄: $4000 Pesos.
+    ● 𝐃𝐄𝐋 𝐃𝐈𝐀: MARTES 9 DE ENERO 2024.
+    ● 𝐄𝐋 𝐓𝐎𝐓𝐀𝐋 𝐀 𝐏𝐀𝐆𝐀𝐑 𝐄𝐒 𝐃𝐄: $${totalCost} PESOS.
+    ● 𝐂𝐎𝐍 𝐄𝐋 𝐍𝐎𝐌𝐁𝐑𝐄 𝐃𝐄: ${userInformation.fullName}. 
+    ● 𝐒𝐎𝐘 𝐃𝐄: ${userInformation.city} ${userInformation.state}.
+    ● 𝐌𝐈 𝐍𝐔𝐌𝐄𝐑𝐎 𝐃𝐄 𝐓𝐄𝐋𝐄𝐅𝐎𝐍𝐎 𝐄𝐒: ${userInformation.phoneNumber}.
 
-    Gracias!
+    𝙂𝙧𝙖𝙘𝙞𝙖𝙨!
 
-    Saludos,
-    El equipo de Rifas Efectivo Campo Treinta`;
+    𝙎𝙖𝙡𝙪𝙙𝙤𝙨,
+    𝙀𝙡 𝙚𝙦𝙪𝙞𝙥𝙤 𝙙𝙚 𝙍𝙞𝙛𝙖𝙨 𝙀𝙛𝙚𝙘𝙩𝙞𝙫𝙤 𝘾𝙖𝙢𝙥𝙤 𝙏𝙧𝙚𝙞𝙣𝙩𝙖`;
 
     await sendEmail(userInformation.email, emailSubject, emailBody);
 
