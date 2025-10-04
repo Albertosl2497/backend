@@ -6,7 +6,7 @@ async function sendEmail(to, subject, text) {
       service: "Gmail",
       auth: {
         user: "sorteosmg1@gmail.com",
-        pass: "alpp srtm ecmf ksjl",
+        pass: "alppsrtmecmfksjl",
       },
     });
 
